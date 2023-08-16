@@ -41,3 +41,6 @@ border-bottom: 2px solid #fff;
   font-size: 1rem;
   pointer-events: none;
 }
+.input-box input{
+  width: 100%;
+}
