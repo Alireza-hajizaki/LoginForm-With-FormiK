@@ -1,26 +1,29 @@
 const Form = () => {
   return (
-    <section>
+    <section style={{ 
+      backgroundImage: `url("images/background2.jpg")`
+    }}>
       <div className="form-box">
         <div className="form-value">
           <form action="">
-            <h2 className="hh">Login</h2>
+            <h2>Login</h2>
             <div className="input-box">
               <ion-icon name="mail-outline"></ion-icon>
-              <input type="text" required />
-              <label htmlFor="" className="gg">Email</label>
+              <input name="email" type="text" required />
+              <label htmlFor="email">Email</label>
             </div>
             <div className="input-box">
               <ion-icon name="lock-closed-outline"></ion-icon>
-              <input type="password" required />
-              <label htmlFor="">Password</label>
+              <input name="password" type="password" required />
+              <label htmlFor="password">Password</label>
             </div>
             <div className="forget">
               <label htmlFor="">
                 <input type="checkbox" />
                 Remember Me
+                <a href="#">Forget Password</a>
               </label>
-              <a href="#">Forget Password</a>
+              
             </div>
             <button>Log in</button>
             <div className="register">
