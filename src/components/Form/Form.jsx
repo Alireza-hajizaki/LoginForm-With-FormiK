@@ -55,7 +55,7 @@ const PerfectForm = () => {
             <div className="forget">
               <label htmlFor="">
                 <input type="checkbox" />
-                Remember Me
+                 Remember Me
                 <a href="/#"> | Forget Password</a>
               </label>
             </div>
