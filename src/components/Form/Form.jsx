@@ -1,62 +1,56 @@
-import { useFormik } from "formik";
 import * as Yup from 'yup';
+import { Formik ,Form ,Field , ErrorMessage } from "formik";
 
-const Form = () => {
+const initialValues = {
+  email:'',
+  password:'',
+}
 
-  const initialValues = {
-    email:'',
-    password:'',
-  }
+const onSubmit = values => {
+  console.log("values" , values);
+}
 
-  const onSubmit = values => {
-    console.log("values" , values);
-  }
+const validationSchema = Yup.object({
+  email: Yup.string().email('Invalid email format').required('Required'),
+  password: Yup.string().required('Required'),
+})
 
-  const validationSchema = Yup.object({
-    email: Yup.string().email('Invalid email format').required('Required'),
-    password: Yup.string().required('Required'),
-  })
-
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-    validationSchema, 
-  });
-
-  console.log(formik.errors)
-
+const PerfectForm = () => {
   return (
-    <section style={{ 
+    <Formik 
+    initialValues={initialValues}
+    validationSchema={validationSchema}
+    onSubmit={onSubmit}
+    >
+      <section style={{ 
       backgroundImage: `url("images/background2.jpg")`
     }}>
       <div className="form-box">
         <div className="form-value">
-          <form action="" onSubmit={formik.handleSubmit}>
+          <Form>
             <h2>Login</h2>
 
             <div className="input-box">
               <ion-icon name="mail-outline"></ion-icon>
-              <input 
+              <Field 
               name="email" 
               type="text"
-              {...formik.getFieldProps('email')}
               required
               />
               <label htmlFor="email">Email</label>
             </div>
-            {formik.touched.email && formik.errors.email ? <div className="error">{formik.errors.email}</div>:null}
+            <ErrorMessage name='email'/>
 
             <div className="input-box">
               <ion-icon name="lock-closed-outline"></ion-icon>
-              <input 
+              <Field 
               name="password" 
               type="password"
-              {...formik.getFieldProps('password')}
               required
               />
               <label htmlFor="password">Password</label>
             </div>
-            {formik.touched.password && formik.errors.password ? <div className="error">{formik.errors.password}</div>:null}
+            <ErrorMessage name='password'/>
 
             <div className="forget">
               <label htmlFor="">
@@ -74,11 +68,12 @@ const Form = () => {
               </p>
             </div>
 
-          </form>
+          </Form>
         </div>
       </div>
     </section>
+    </Formik>
   );
 };
 
-export default Form;
+export default PerfectForm;

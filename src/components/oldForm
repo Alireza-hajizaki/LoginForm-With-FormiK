@@ -57,6 +57,7 @@
 //               onBlur={formik.handleBlur}
 //               onChange={formik.handleChange} 
 //               value={formik.values.email}
+//               //3 top row or {...formik.getFieldProps('email')}
 //               required
 //               />
 //               <label htmlFor="email">Email</label>
