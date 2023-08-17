@@ -20,8 +20,7 @@ const Form = () => {
   const formik = useFormik({
     initialValues,
     onSubmit,
-    validationSchema,
-    // validate, 
+    validationSchema, 
   });
 
   console.log(formik.errors)
@@ -40,9 +39,7 @@ const Form = () => {
               <input 
               name="email" 
               type="text"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange} 
-              value={formik.values.email}
+              {...formik.getFieldProps('email')}
               required
               />
               <label htmlFor="email">Email</label>
@@ -54,9 +51,7 @@ const Form = () => {
               <input 
               name="password" 
               type="password"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange} 
-              value={formik.values.password} 
+              {...formik.getFieldProps('password')}
               required
               />
               <label htmlFor="password">Password</label>
