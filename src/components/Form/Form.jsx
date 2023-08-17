@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
-import { Formik ,Form ,Field , ErrorMessage } from "formik";
+import { Formik ,Form ,Field ,ErrorMessage } from "formik";
+import TextError from '../TextError';
 
 const initialValues = {
   email:'',
@@ -39,7 +40,7 @@ const PerfectForm = () => {
               />
               <label htmlFor="email">Email</label>
             </div>
-            <ErrorMessage name='email'/>
+            <ErrorMessage name='email' component={TextError}/>
 
             <div className="input-box">
               <ion-icon name="lock-closed-outline"></ion-icon>
@@ -50,7 +51,9 @@ const PerfectForm = () => {
               />
               <label htmlFor="password">Password</label>
             </div>
-            <ErrorMessage name='password'/>
+            <ErrorMessage name='password'>
+              {(errorMsg) => <div className='error'>{errorMsg}</div>}
+            </ErrorMessage>
 
             <div className="forget">
               <label htmlFor="">
