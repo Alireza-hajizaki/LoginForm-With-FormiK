@@ -40,6 +40,7 @@ const PerfectForm = () => {
               />
               <label htmlFor="email">Email</label>
             </div>
+            {/* first way: use component props */}
             <ErrorMessage name='email' component={TextError}/>
 
             <div className="input-box">
@@ -51,6 +52,7 @@ const PerfectForm = () => {
               />
               <label htmlFor="password">Password</label>
             </div>
+            {/* second way: use children */}
             <ErrorMessage name='password'>
               {(errorMsg) => <div className='error'>{errorMsg}</div>}
             </ErrorMessage>
