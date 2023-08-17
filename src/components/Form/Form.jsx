@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import * as Yup from 'yup';
 
 const Form = () => {
 
@@ -11,24 +12,16 @@ const Form = () => {
     console.log("values" , values);
   }
 
-  const validate = values => {
-     let errors = {}
-
-     if(!values.email){
-      errors.email = 'Required'
-     }else if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i.test(values.email)){
-      errors.email ='Invalid email format';
-     }
-     if(!values.password){
-      errors.password = 'Required'
-     }
-     return errors;
-  }
+  const validationSchema = Yup.object({
+    email: Yup.string().email('Invalid email format').required('Required'),
+    password: Yup.string().required('Required'),
+  })
 
   const formik = useFormik({
     initialValues,
     onSubmit,
-    validate, 
+    validationSchema,
+    // validate, 
   });
 
   console.log(formik.errors)
